@@ -11,7 +11,7 @@ let { BOT_TOKEN, SERVER_URL, MY_CHATID, WEBHOOK_TOKEN } = process.env;
 
 const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
-const URI = `webhook/${BOT_TOKEN}`;
+const URI = `/webhook/${BOT_TOKEN}`;
 
 const WEBHOOK_URL = SERVER_URL + URI;
 
@@ -36,15 +36,15 @@ const init = async () => {
 
 // used to find the initial chat id
 
-// app.post(MY_URI, async (req, res) => {
-//   console.log("here");
-//   console.log(req.body);
-//   await axios.post(`${TELEGRAM_API}/sendMessage`, {
-//     chat_id: MY_CHATID,
-//     text: "dummmy text",
-//   });
-//   return res.send();
-// });
+app.post(URI, async (req, res) => {
+  console.log("here");
+  console.log(req.body);
+  await axios.post(`${TELEGRAM_API}/sendMessage`, {
+    chat_id: MY_CHATID,
+    text: "dummmy text",
+  });
+  return res.send();
+});
 app.post("/", async (req, res) => {
   console.log("here");
   let email = toMarkdownV2({ text: req.body.email, entities: [] });
