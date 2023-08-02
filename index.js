@@ -36,17 +36,16 @@ const init = async () => {
 
 // used to find the initial chat id
 
-app.post(URI, async (req, res) => {
-  console.log("here");
-  console.log(req.body);
-  await axios.post(`${TELEGRAM_API}/sendMessage`, {
-    chat_id: MY_CHATID,
-    text: "dummmy text",
-  });
-  return res.send();
-});
+// app.post(URI, async (req, res) => {
+//   console.log("here");
+//   console.log(req.body);
+//   await axios.post(`${TELEGRAM_API}/sendMessage`, {
+//     chat_id: MY_CHATID,
+//     text: "dummmy text",
+//   });
+//   return res.send();
+// });
 app.post("/", async (req, res) => {
-  console.log("here");
   let email = toMarkdownV2({ text: req.body.email, entities: [] });
   let message = toMarkdownV2({ text: req.body.message, entities: [] });
   var ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
